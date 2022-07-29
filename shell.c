@@ -1,43 +1,64 @@
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-
-int main ()
+#include "main.h"
+/**
+ * main - main function
+ * @ac: saves the memory adress
+ * @av: pointer to pointer
+ * Return: 0
+ */
+int main(__attribute__((unused))int ac, char **av)
 {
+	int status = 0;
 	char *buffer = NULL;
-	size_t bufsize = 0;
-	int status, pid;
 	char *argv[] = {"", NULL};
-	char *tok; 
-	struct stat st;
-	
+	size_t size = 0, prompt = 0, ctrl_d = -1;
+
 	while (1)
 	{
 		printf("#cisfun$ ");
-		getline(&buffer, &bufsize, stdin);
-		tok = strtok(buffer, "\n");
-		buffer = tok;
+		/* espero que el usuario pase algo */
+		prompt = getline(&buffer, &size, stdin);
+		strtok(buffer, "\n");
 		argv[0] = buffer;
-		pid = fork();
-		if (pid == -1)
-			return (-1);
-		if (pid == 0)
+		if (prompt == ctrl_d) /* ctrl + d */
 		{
-			if (stat(argv[0],&st) == 0)
-			{
-				printf("%s", buffer);
-				execve(argv[0], argv, NULL);
-			}
-			else
-				printf("file %s not found\n", argv[0]);
+			printf("\n");
+			/* libero memoria si falla, buffer es el malloc interno de getline*/
+			free(buffer);
+			break;
 		}
-		else
-			wait(&status);
+		status = check_stat(argv[0], av[0]);
+		if (status)
+			create_child(argv);
 	}
-	free(buffer);
+	return (0);
+}
+
+int check_stat(char *argv, char *av)
+{
+	struct stat st;
+
+	if (stat(argv, (&st)) == 0)
+	{
+		return (1); /* si consigue el archivo */
+	}
+	else
+	{
+		printf("%s: No such file or directory\n", av);
+		return (0);
+	}
+}
+
+int create_child(char **argv)
+{
+	int status = 0;
+	pid_t pid;
+
+	pid = fork();
+	if (pid == -1)
+		return (-1);
+	if (pid == 0)
+		execve(argv[0], argv, NULL);
+	else
+		wait(&status);
 	return (0);
 }
