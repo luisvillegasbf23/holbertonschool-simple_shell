@@ -12,16 +12,18 @@ int main(__attribute__((unused))int ac, char **av)
 	char *argv[] = {"", NULL};
 	size_t size = 0, prompt = 0, ctrl_d = -1;
 
-	while (1)
+	while (EOF)
 	{
-		printf("#cisfun$ ");
+		if (isatty(0))
+			printf("#cisfun$ ");
 		/* espero que el usuario pase algo */
-		prompt = getline(&buffer, &size, stdin);
+		do { /* ejecuta y luego condiciona */
+			prompt = getline(&buffer, &size, stdin);
+		} while (buffer[0] == '\n');
 		strtok(buffer, "\n");
 		argv[0] = buffer;
 		if (prompt == ctrl_d) /* ctrl + d */
 		{
-			printf("\n");
 			/* libero memoria si falla, buffer es el malloc interno de getline*/
 			free(buffer);
 			break;
@@ -62,3 +64,4 @@ int create_child(char **argv)
 		wait(&status);
 	return (0);
 }
+/* acomodar modo no interactivo */
