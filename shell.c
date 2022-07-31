@@ -20,16 +20,19 @@ int main(__attribute__((unused))int ac, char **av)
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
 		} while (buffer[0] == '\n' && prompt > 1);
-		tokenizer(buffer, array, "\n ");
 		if (prompt == ctrl_d) /* ctrl + d */
-		{
+			{
 			/* libero memoria si falla, buffer es el malloc interno de getline*/
-			free(buffer);
-			break;
+				free(buffer);
+				break;
+			}
+		if(check_space(buffer))
+		{
+			tokenizer(buffer, array, "\n ");
+			status = check_stat(array[0], av[0]);
+			if (status)
+				create_child(array);
 		}
-		status = check_stat(array[0], av[0]);
-		if (status)
-			create_child(array);
 	}
 	return (0);
 }
@@ -68,13 +71,32 @@ void tokenizer(char *buffer, char **array, char *delim)
 {
 	int i = 0;
 
+	init(array);
 	array[i] = strtok(buffer, delim);
-
 	while (array[i])
 	{
 		i++;
 		array[i] = strtok(NULL, delim);
 	}	
 }
+
+void init(char **array)
+{
+	int i = 0;
+	for (; array[i]; i++)
+		array[i] = NULL;
+}
+int check_space(char *buffer)
+{
+	int i = 0;
+
+	for(;buffer[i]; i++)
+	{
+		if(buffer[i] != ' ')
+			return (0);
+	}
+	return (1);
+}
+
 
 /* acomodar modo no interactivo */
