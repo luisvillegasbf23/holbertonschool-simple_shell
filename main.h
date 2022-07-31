@@ -9,4 +9,5 @@
 #include <sys/stat.h>
 int check_stat(char *argv, char *av);
 int create_child(char **argv);
+void tokenizer(char *buffer, char **array, char *delim);
 #endif

@@ -9,7 +9,7 @@ int main(__attribute__((unused))int ac, char **av)
 {
 	int status = 0;
 	char *buffer = NULL;
-	char *argv[] = {"", NULL};
+	char *array[1020];
 	size_t size = 0, prompt = 0, ctrl_d = -1;
 
 	while (EOF)
@@ -19,18 +19,17 @@ int main(__attribute__((unused))int ac, char **av)
 		/* espero que el usuario pase algo */
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
-		} while (buffer[0] == '\n');
-		strtok(buffer, "\n");
-		argv[0] = buffer;
+		} while (buffer[0] == '\n' && prompt > 1);
+		tokenizer(buffer, array, "\n ");
 		if (prompt == ctrl_d) /* ctrl + d */
 		{
 			/* libero memoria si falla, buffer es el malloc interno de getline*/
 			free(buffer);
 			break;
 		}
-		status = check_stat(argv[0], av[0]);
+		status = check_stat(array[0], av[0]);
 		if (status)
-			create_child(argv);
+			create_child(array);
 	}
 	return (0);
 }
@@ -64,4 +63,18 @@ int create_child(char **argv)
 		wait(&status);
 	return (0);
 }
+
+void tokenizer(char *buffer, char **array, char *delim)
+{
+	int i = 0;
+
+	array[i] = strtok(buffer, delim);
+
+	while (array[i])
+	{
+		i++;
+		array[i] = strtok(NULL, delim);
+	}	
+}
+
 /* acomodar modo no interactivo */
