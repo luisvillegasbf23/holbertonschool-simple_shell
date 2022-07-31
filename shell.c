@@ -71,7 +71,6 @@ void tokenizer(char *buffer, char **array, char *delim)
 {
 	int i = 0;
 
-	init(array);
 	array[i] = strtok(buffer, delim);
 	while (array[i])
 	{
@@ -80,13 +79,6 @@ void tokenizer(char *buffer, char **array, char *delim)
 	}
 }
 
-void init(char **array)
-{
-	int i = 0;
-
-	for (; array[i]; i++)
-		array[i] = NULL;
-}
 
 int check_space(char *buffer)
 {
