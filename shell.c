@@ -37,6 +37,12 @@ int main(__attribute__((unused))int ac, char **av)
 	return (0);
 }
 
+/**
+* check_stat - checks the status of father process
+* @argv : 
+* @av : 
+* Return : 
+*/
 int check_stat(char *argv, char *av)
 {
 	struct stat st;
@@ -52,6 +58,11 @@ int check_stat(char *argv, char *av)
 	}
 }
 
+/**
+* create_child - 
+* @argv : pointer to pointer
+* Return : 
+*/
 int create_child(char **argv)
 {
 	int status = 0;
@@ -67,6 +78,12 @@ int create_child(char **argv)
 	return (0);
 }
 
+/**
+* tokenizer - 
+* @buffer : 
+* @array : pointer of pointer
+* @delim :
+*/
 void tokenizer(char *buffer, char **array, char *delim)
 {
 	int i = 0;
@@ -79,7 +96,10 @@ void tokenizer(char *buffer, char **array, char *delim)
 	}
 }
 
-
+/**
+* check_space - 
+* @buffer : 
+*/
 int check_space(char *buffer)
 {
 	int i = 0;
