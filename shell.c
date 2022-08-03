@@ -19,7 +19,6 @@ int main(__attribute__((unused))int ac, char **av)
 		/* espero que el usuario pase algo */
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
-			printf("%lu\n", prompt);
 		} while (buffer[0] == '\n' && prompt > ctrl_d);
 		if (prompt == ctrl_d) /* ctrl + d */
 		{
