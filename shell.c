@@ -7,7 +7,7 @@
  */
 int main(__attribute__((unused))int ac, char **av)
 {
-	int status = 0;
+	int status = 0, i = 0;
 	char *buffer = NULL;
 	char *array[1020];
 	size_t size = 0, prompt = 0, ctrl_d = -1;
@@ -29,11 +29,14 @@ int main(__attribute__((unused))int ac, char **av)
 		if (check_space(buffer))
 		{
 			tokenizer(buffer, array, "\n ");
-			if (strcmp(buffer, "exit") == 0)
-			{
-				free(buffer);
-				exit (-1);
-			}  
+			if (strcmp(array[0], "exit") == 0)
+            {
+                free(buffer);
+				for(i = 0; array[i]; i++)
+					;
+				printf("%d", i);
+				return(i);
+            }
 			status = check_stat(array[0], av[0]);
 			if (status)
 				create_child(array);
