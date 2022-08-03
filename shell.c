@@ -25,10 +25,15 @@ int main(__attribute__((unused))int ac, char **av)
 			/* libero memoria si falla, buffer es el malloc interno de getline*/
 			free(buffer);
 			break;
-		}
+		}		
 		if (check_space(buffer))
 		{
 			tokenizer(buffer, array, "\n ");
+			if (strcmp(buffer, "exit") == 0)
+			{
+				free(buffer);
+				exit (-1);
+			}  
 			status = check_stat(array[0], av[0]);
 			if (status)
 				create_child(array);
