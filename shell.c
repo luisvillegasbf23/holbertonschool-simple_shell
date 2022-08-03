@@ -19,7 +19,8 @@ int main(__attribute__((unused))int ac, char **av)
 		/* espero que el usuario pase algo */
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
-		} while (buffer[0] == '\n' && prompt > 1);
+			printf("%lu\n", prompt);
+		} while (buffer[0] == '\n' && prompt > ctrl_d);
 		if (prompt == ctrl_d) /* ctrl + d */
 		{
 			/* libero memoria si falla, buffer es el malloc interno de getline*/
