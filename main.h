@@ -7,9 +7,15 @@
 #include <sys/types.h>                                                 
 #include <sys/wait.h>
 #include <sys/stat.h>
-int check_stat(char *argv, char *av);
+extern char **environ;
 int create_child(char **argv);
 void tokenizer(char *buffer, char **array, char *delim);
 void init(char **array);
 int check_space(char *buffer);
+char *_getenv(const char *name);
+void get_path(char **array_dir);
+void free_array_dir(char **arry_dir);
+char *check_path(char *buffer, char **array_path);
+int check_stat(char *argv);
+int check_dir(char *array);
 #endif
