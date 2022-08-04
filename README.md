@@ -6,7 +6,7 @@ This repository contains every file required to make this projects possible. Whi
 
 
 ## What is a Shell
-A **shell** is a software interface that's often a command line interface that enables the user to interact with the computer.
+The **shell** is a program that interacts with the user through a terminal or takes the input from a file and executes a sequence of commands that are passed to the Operating System. 
  
 ## About our Project
 The aim of this project, presented to every group of Cohort 18 is to face and learn how the real shell works, by facing the creation of its simple version and also using some of our own created functions.
