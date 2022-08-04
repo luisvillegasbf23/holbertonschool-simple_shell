@@ -42,13 +42,11 @@ char *check_path(char *buffer, char **array_path)
 		strcat(dir, buffer);
 		if (stat(dir, &st) == 0)
 		{
-			printf("%s: te encontre\n", dir);
 			return(dir);
 		}
 		else
             free(dir);
 	}
-    printf("command no found\n");
     return (NULL);
 }
 
@@ -87,7 +85,13 @@ int main(void)
 			else
 			{
 				path = check_path(array[0], array_dir);
-				execve(path, array, NULL);
+				if (path != NULL)
+				{
+					create_child2(array, path);
+					free(path);
+				}
+				else
+					printf("command no found\n");
 			}
 		}
 		free_array_dir(array_dir);
@@ -95,6 +99,20 @@ int main(void)
 	return (0);
 }
 
+int create_child2(char **argv, char *path)
+{
+    int status = 0;
+    pid_t pid;
+
+    pid = fork();
+    if (pid == -1)
+        return (-1);
+    if (pid == 0)
+        execve(path, argv, NULL);
+    else
+        wait(&status);
+    return (0);
+}
 int check_stat(char *argv)
 {
 	struct stat st;

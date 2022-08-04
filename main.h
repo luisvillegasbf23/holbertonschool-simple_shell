@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 extern char **environ;
 int create_child(char **argv);
+int create_child2(char **argv, char *path);
 void tokenizer(char *buffer, char **array, char *delim);
 void init(char **array);
 int check_space(char *buffer);
