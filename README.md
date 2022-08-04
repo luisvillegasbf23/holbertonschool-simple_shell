@@ -52,7 +52,7 @@ The aim of this project, presented to every group of Cohort 18 is to face and le
 - exit [arguments] (built-in)
 - Executes any command with its arguments
 - Commands with or without flags
-- Handles 'Ctrl+d'
+- Handles 'Ctrl+d' (end of program)
 - It can Handle errors too
 
 ## Files
