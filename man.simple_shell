@@ -7,8 +7,10 @@ Simple Shell
 #include "main.h"
 
 int main(void);
+
 .SH DESCRIPTION
 The aim of this project is to face and learn how the real shell works, by going through the creation of its simple version and also by using some of our own created functions.
+
 .SS What our shell can handle:
 - It handles interactive mode
 - A non interactive mode
