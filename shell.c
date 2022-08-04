@@ -58,54 +58,7 @@ int main(void)
 	char *buffer = NULL, *path = NULL;
 	char *array[1020], *array_dir[1020];
 	size_t size = 0, prompt = 0, ctrl_d = -1;
-int check_space(char *buffer)
-{
-    int i = 0;
-
-    for (i = 0; buffer[i]; i++)
-    {
-        if (buffer[i] != ' ' && buffer[i] != '\n' && buffer[i] != '\t')
-            return (1);
-    }
-    return (0);
-}
-char *_getenv(const char *name)
-{
-    char *copy = NULL;
-    int i = 0;
-    int count = strlen(name);
-
-    for (; environ[i]; i++)
-    {
-        if (strncmp(environ[i], name, count) == 0)
-        {
-            copy = environ[i];
-            return(copy);
-        }
-    }
-    return (NULL);
-}
-
-void get_path(char **array_dir)
-{
-    int i = 0;
-    char *copy = strdup(_getenv("PATH="));
-    char *dir = NULL;
-
-    if (array_dir)
-    {
-        strtok(copy, ":=");
-        dir = strtok(NULL, ":=");
-        for (i = 0; dir[i]; i++)
-        {
-            dir = strtok(NULL, ":=");
-            array_dir[i] = strdup(dir);
-        }
-        array_dir[i] = NULL;
-        free(copy);
-    }
-}
-
+	
 	while (EOF)
 	{
 		get_path(array_dir);
