@@ -1,0 +1,26 @@
+#Man Simple Shell
+
+.TH Simple Shell
+.SH NAME
+Simple Shell
+.SH SYNOPSIS
+#include "main.h"
+
+int main(void);
+.SH DESCRIPTION
+The aim of this project is to face and learn how the real shell works, by going through the creation of its simple version and also by using some of our own created functions.
+.SS What our shell can handle:
+- It handles interactive mode
+- A non interactive mode
+- Handles Built-in commands
+- env (built-in)
+- exit [arguments] (built-in)
+- Executes any command with its arguments
+- Commands with or without flags
+- Handles 'Ctrl+d'
+- It can Handle errors too
+
+## Authors:
+[Luis Baute] (https://www.linkedin.com/in/luis-baute-99305b188) 
+[Rodrigo Olivera] (https://www.linkedin.com/in/juan-rodrigo-olivera-b87a35224/)
+
