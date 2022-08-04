@@ -45,19 +45,22 @@ The aim of this project, presented to every group of Cohort 18 is to face and le
 -   `write`  (man 2 write)## Switch to another file
 
 ## What our Shell can Handle
+- It handles interactive mode
+- A non interactive mode
+- Handles Built-in commands
+- env (built-in)
+- exit [arguments] (built-in)
+- Executes any command with its arguments
+- Commands with or without flags
+- Handles 'Ctrl+d'
+- It can Handle errors too
 
-
-
-## Files Content
-- AUTHORS -> 
-- man.simpleshell -> 
-- main.h -> The header file.
-- shell.c -> 
-- path.c -> 
-- 
-- 
-- 
-- 
+## Files
+- AUTHORS
+- man.simple_shell
+- main.h (The header file)
+- shell.c
+- path.c
 ## Compiling 
 
 Our Shell will be compiled this way: 
