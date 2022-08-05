@@ -97,5 +97,6 @@ void get_path(char **array_dir)
 	}
 	array_dir[i] = NULL;
 	free(copy);
+	copy = NULL;
 	}
 }

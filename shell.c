@@ -5,16 +5,14 @@
 */
 int main(void)
 {
-	int status = 0;
 	char *buffer = NULL, *path = NULL;
 	char *array[1020], *array_dir[1020];
 	size_t size = 0, prompt = 0, ctrl_d = -1;
 
 	while (EOF)
 	{
-		/* if (isatty(0))
-			printf("#cisfun$ "); */
-		/* espero que el usuario pase algo */
+		if (isatty(0))
+			printf("#cisfun$ ");
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
 			if (prompt == ctrl_d) /* ctrl + d */
@@ -28,8 +26,7 @@ int main(void)
 			tokenizer(buffer, array, "\t\n ");
 			if (check_dir(array[0]))
 			{
-				status = check_stat(array[0]);
-				if (status)
+				if (check_stat(array[0]))
 					create_child(array);
 			}
 			else
