@@ -61,7 +61,6 @@ int main(void)
 	{
 		if (isatty(0))
 			printf("#cisfun$ ");
-		get_path(array_dir);
 		/* espero que el usuario pase algo */
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
@@ -69,7 +68,6 @@ int main(void)
 			{
 				/* libero memoria si falla, buffer es el malloc interno de getline*/
 				free(buffer);
-				free_array_dir(array_dir);
 				exit(0);
 			}
 		} while (buffer[0] == '\n' && prompt > ctrl_d);
@@ -84,17 +82,18 @@ int main(void)
 			}
 			else
 			{
+				get_path(array_dir);
 				path = check_path(array[0], array_dir);
 				if (path != NULL)
 				{
 					create_child2(array, path);
 					free(path);
+					free_array_dir(array_dir);
 				}
 				else
 					printf("command no found\n");
 			}
 		}
-		free_array_dir(array_dir);
 	}
 	return (0);
 }
