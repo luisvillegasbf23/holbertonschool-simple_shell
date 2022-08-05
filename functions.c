@@ -1,7 +1,7 @@
 #include "main.h"
 /**
 * free_array_dir - frees array direction
-* @array_dir : array direction
+* @array_dir: array direction
 * Return: nothing
 */
 void free_array_dir(char **array_dir)
@@ -10,15 +10,14 @@ void free_array_dir(char **array_dir)
 
 	if (array_dir)
 	{
-	for (j = 0; array_dir[j]; j++)
-	free(array_dir[j]);
+		for (j = 0; array_dir[j]; j++)
+			free(array_dir[j]);
 	}
 }
-#include "main.h"
 /**
 * check_dir - checks array direction
-* @array : arr
-* Return : 1 on success
+* @array: arr
+* Return: 1 on success
 */
 int check_dir(char *array)
 {
@@ -26,17 +25,16 @@ int check_dir(char *array)
 
 	for (i = 0; array[i]; i++)
 	{
-	if (array[i] == '/')
-		return (1);
+		if (array[i] == '/')
+			return (1);
 	}
 	return (0);
 }
-#include "main.h"
 /**
 * check_path - checks the current path
-* @buffer : buff
-* @array_path : arrays path
-* Return : the dir if exists, NULL otherwise
+* @buffer: buff
+* @array_path: pointer to a pointer to a string
+* Return: the dir if exists, NULL otherwise
 */
 char *check_path(char *buffer, char **array_path)
 {
@@ -53,20 +51,16 @@ char *check_path(char *buffer, char **array_path)
 		strcat(dir, "/");
 		strcat(dir, buffer);
 		if (stat(dir, &st) == 0)
-		{
 			return (dir);
-		}
-		else
-	free(dir);
+		free(dir);
 	}
 	return (NULL);
 }
-#include "main.h"
 /**
 * create_child2 - creates another child process
-* @argv : the content of the line command
-* @path : the current path
-* Return :
+* @argv: the content of the line command
+* @path: the current path
+* Return: 0 on success, -1 otherwise
 */
 int create_child2(char **argv, char *path)
 {
@@ -75,30 +69,24 @@ int create_child2(char **argv, char *path)
 
 	pid = fork();
 	if (pid == -1)
-	return (-1);
+		return (-1);
 	if (pid == 0)
-	execve(path, argv, NULL);
+		execve(path, argv, NULL);
 	else
-	wait(&status);
+		wait(&status);
 	return (0);
 }
-#include "main.h"
 /**
 * check_stat - file status
-* @argv : the file content
-* Return : 0
+* @argv: pointer to string
+* Return: 1 on success, 0 on failure
 */
 int check_stat(char *argv)
 {
 	struct stat st;
 
 	if (stat(argv, (&st)) == 0)
-	{
 		return (1); /* si consigue el archivo */
-	}
-	else
-	{
-		printf("No such file or directory\n");
-		return (0);
-	}
+	printf("No such file or directory\n");
+	return (0);
 }

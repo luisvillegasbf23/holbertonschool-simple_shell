@@ -1,8 +1,8 @@
 #include "main.h"
 /**
 * create_child - generates a child process
-* @argv : pointer to pointer
-* Return : 0 or -1 on failure
+* @argv: pointer to pointer
+* Return: 0 or -1 on failure
 */
 int create_child(char **argv)
 {
@@ -18,13 +18,12 @@ int create_child(char **argv)
 		wait(&status);
 	return (0);
 }
-#include "main.h"
 /**
 * tokenizer - generates an array with the arguments given
-* @buffer : the command line
-* @array : pointer of pointer
-* @delim : the arguments delimiter
-* Return : nothing
+* @buffer: the command line
+* @array: pointer of pointer
+* @delim: the arguments delimiter
+* Return: nothing
 */
 void tokenizer(char *buffer, char **array, char *delim)
 {
@@ -37,11 +36,10 @@ void tokenizer(char *buffer, char **array, char *delim)
 		array[i] = strtok(NULL, delim);
 	}
 }
-#include "main.h"
 /**
 * check_space - checks for a space in all the arguments
-* @buffer : the command typed
-* Return : 0 on failure, 1 on succes
+* @buffer: the command typed
+* Return: 0 on failure, 1 on succes
 */
 int check_space(char *buffer)
 {
@@ -54,11 +52,10 @@ int check_space(char *buffer)
 	}
 	return (0);
 }
-#include "main.h"
 /**
 * _getenv - gives the enviromental variable depending the command typed
-* @name : what the user typed
-* Return : NULL or copy on success.
+* @name: what the user typed
+* Return: NULL or copy on success.
 */
 char *_getenv(const char *name)
 {
@@ -68,19 +65,18 @@ char *_getenv(const char *name)
 
 	for (; environ[i]; i++)
 	{
-	if (strncmp(environ[i], name, count) == 0)
-	{
-		copy = environ[i];
-		return (copy);
-	}
+		if (strncmp(environ[i], name, count) == 0)
+		{
+			copy = environ[i];
+			return (copy);
+		}
 	}
 	return (NULL);
 }
-#include "main.h"
 /**
 * get_path - path of typed arguments
-* @array_dir : direction of array
-* Return : nothing
+* @array_dir: direction of array
+* Return: nothing
 */
 void get_path(char **array_dir)
 {
