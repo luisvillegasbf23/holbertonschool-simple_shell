@@ -59,12 +59,12 @@ int main(void)
 	
 	while (EOF)
 	{
-		get_path(array_dir);
 		if (isatty(0))
 			printf("#cisfun$ ");
 		/* espero que el usuario pase algo */
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
+			get_path(array_dir);
 			if (prompt == ctrl_d) /* ctrl + d */
 			{
 				/* libero memoria si falla, buffer es el malloc interno de getline*/
@@ -218,4 +218,3 @@ void get_path(char **array_dir)
         free(copy);
     }
 }
-
