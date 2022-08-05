@@ -73,32 +73,3 @@ char *_getenv(const char *name)
 	}
 	return (NULL);
 }
-/**
-* get_path - path of typed arguments
-* @array_dir: direction of array
-* Return: nothing
-*/
-void get_path(char **array_dir)
-{
-	int i = 0;
-	char *copy = NULL;
-	char *dir = NULL;
-	char *cual = NULL;
-
-	copy = strdup(_getenv("PATH="));
-	cual = copy;
-	strtok(copy, ":=");
-	dir = strtok(NULL, ":=");
-
-	if (dir)
-	{
-	for (i = 0; dir[i]; i++)
-	{
-		dir = strtok(NULL, ":=");
-		array_dir[i] = strdup(dir);
-	}
-	array_dir[i] = NULL;
-	free(cual);
-	copy = NULL;
-	}
-}

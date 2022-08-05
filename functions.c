@@ -42,28 +42,25 @@ char *check_path(char *buffer, char **array_path)
 	int i = 0;
 	char *dir = NULL;
 	int j = 0;
-    char *copy = NULL;
-    char *dire = NULL;
-    char *cual = NULL;
-
+	char *copy = NULL;
+	char *dire = NULL;
+	char *cual = NULL;
 
 	copy = strdup(_getenv("PATH="));
-    cual = copy;
-    strtok(copy, ":=");
-    dire = strtok(NULL, ":=");
-
-    if (dire)
-    {
-    for (j = 0; dire[j]; j++)
-    {
-        dire = strtok(NULL, ":=");
-        array_path[j] = strdup(dire);
-    }
-    array_path[j] = NULL;
-    free(cual);
-    copy = NULL;
-    }
-
+	cual = copy;
+	strtok(copy, ":=");
+	dire = strtok(NULL, ":=");
+	if (dire)
+	{
+		for (j = 0; dire[j]; j++)
+		{
+			dire = strtok(NULL, ":=");
+			array_path[j] = strdup(dire);
+		}
+		array_path[j] = NULL;
+		free(cual);
+		copy = NULL;
+	}
 	for (i = 0; array_path[i]; i++)
 	{
 		dir = malloc(strlen(buffer) + strlen(array_path[i]) + 1000);

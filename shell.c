@@ -31,9 +31,8 @@ int main(void)
 			}
 			else
 			{
-				/*get_path(array_dir);*/
 				path = check_path(array[0], array_dir);
-				if (path != NULL)
+				if (path)
 				{
 					create_child2(array, path);
 					free(path);
