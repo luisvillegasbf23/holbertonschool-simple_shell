@@ -201,8 +201,9 @@ char *_getenv(const char *name)
 void get_path(char **array_dir)
 {
     int i = 0;
-    char *copy = strdup(_getenv("PATH="));
+    char *copy = NULL;
     char *dir = NULL;
+    copy = strdup(_getenv("PATH="));
 
     if (array_dir)
     {
