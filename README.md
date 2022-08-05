@@ -60,7 +60,8 @@ The aim of this project, presented to every group of Cohort 18 is to face and le
 - man.simple_shell
 - main.h (The header file)
 - shell.c
-- path.c
+- functions.c
+- aux_functions.c
 ## Compiling 
 
 Our Shell will be compiled this way: 
@@ -68,3 +69,5 @@ Our Shell will be compiled this way:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 # Example of usage
+
+![](https://i.imgur.com/955zGDO.png)
