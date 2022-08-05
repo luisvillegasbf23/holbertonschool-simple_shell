@@ -12,8 +12,8 @@ int main(void)
 
 	while (EOF)
 	{
-		if (isatty(0))
-			printf("#cisfun$ ");
+		/* if (isatty(0))
+			printf("#cisfun$ "); */
 		/* espero que el usuario pase algo */
 		do { /* ejecuta y luego condiciona */
 			prompt = getline(&buffer, &size, stdin);
