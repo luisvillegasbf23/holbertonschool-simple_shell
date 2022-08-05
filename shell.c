@@ -6,7 +6,7 @@
 int main(void)
 {
 	char *buffer = NULL, *path = NULL;
-	char *array[1020], *array_dir[1020];
+	char *array[1020], *array_dir[1024];
 	size_t size = 0, prompt = 0, ctrl_d = -1;
 
 	while (EOF)
@@ -31,7 +31,7 @@ int main(void)
 			}
 			else
 			{
-				get_path(array_dir);
+				/*get_path(array_dir);*/
 				path = check_path(array[0], array_dir);
 				if (path != NULL)
 				{
