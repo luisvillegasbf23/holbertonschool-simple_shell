@@ -83,8 +83,10 @@ void get_path(char **array_dir)
 	int i = 0;
 	char *copy = NULL;
 	char *dir = NULL;
+	char *cual = NULL;
 
 	copy = strdup(_getenv("PATH="));
+	cual = copy;
 	strtok(copy, ":=");
 	dir = strtok(NULL, ":=");
 
@@ -96,7 +98,7 @@ void get_path(char **array_dir)
 		array_dir[i] = strdup(dir);
 	}
 	array_dir[i] = NULL;
-	free(copy);
+	free(cual);
 	copy = NULL;
 	}
 }
