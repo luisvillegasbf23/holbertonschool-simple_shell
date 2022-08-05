@@ -69,3 +69,5 @@ Our Shell will be compiled this way:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 # Example of usage
+
+![](https://i.imgur.com/955zGDO.png)
