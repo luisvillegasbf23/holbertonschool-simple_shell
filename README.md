@@ -60,7 +60,8 @@ The aim of this project, presented to every group of Cohort 18 is to face and le
 - man.simple_shell
 - main.h (The header file)
 - shell.c
-- path.c
+- functions.c
+- aux_functions.c
 ## Compiling 
 
 Our Shell will be compiled this way: 
